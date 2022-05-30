@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using DiplomaApp.Services.Interfaces;
-using MakeUpShop.SeedData;
 
 namespace DiplomaApp.Controllers
 {
