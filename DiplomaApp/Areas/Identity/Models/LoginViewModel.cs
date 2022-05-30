@@ -5,10 +5,16 @@ namespace DiplomaApp.Areas.Identity.Models
     public class LoginViewModel
     {
         [Required]
-        public string Username { get; set; }
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
         [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
-        public bool RememberLogin { get; set; }
-        public string ReturnUrl { get; set; }
+
+        public bool RememberMe { get; set; }
+
+        public string ReturnUrl { get; set; } 
     }
 }

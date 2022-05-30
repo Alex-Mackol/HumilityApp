@@ -14,7 +14,12 @@ namespace DiplomaApp.Data.Data
         public IdentityContext(DbContextOptions<IdentityContext> options)
         : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

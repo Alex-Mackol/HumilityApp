@@ -17,6 +17,15 @@ body {
   margin-bottom: 60px;
 }
 
+.mb-30 {
+    margin-bottom: 30px
+}
+
+.mt-10 {
+    margin-top: 10px
+}
+
+
 #formVolunteer {
     display: none;
     animation-duration: 1.5s;
@@ -47,4 +56,32 @@ body {
     to {
         opacity: 1;
     }
+}
+
+//login
+div.login-logout-tab div.card-header {
+      padding: 0px 0px 12px 0px;
+  }
+
+div.login-logout-tab ul.nav-tabs {
+    margin: 0px 0px -12px 0px;
+}
+
+div.login-logout-tab li.nav-item {
+    width: 50%;
+}
+
+div.login-logout-tab a.nav-link {
+    font-size: 25px;
+    color: #495057;
+    text-align: center;
+}
+
+div.card-content {
+    padding: 10px 20px;
+}
+
+/*login form*/
+div.login-form-icon {
+    text-align: center;
 }

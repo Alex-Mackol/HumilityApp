@@ -1,62 +1,126 @@
-﻿@using DiplomaApp.Areas.Identity.Models
-@model RegisterViewModel
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model DiplomaApp.Areas.Identity.Models.RegisterViewModel
 
  @{
-     Layout = "_Layout";
+     Layout = "~/Areas/Identity/Views/Account/_LoyautAccount.cshtml"; 
  }
 
-<form method="post" asp-controller="Account" asp-action="Register">
+
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="RoleName"></label>
+                <select asp-for="RoleName" class="form-select">
+                    <option value="">Оберіть:</option>
+                    <option value="refugee">Біженець</option>
+                    <option value="volunteer">Волонтер</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="PasswordConfirm"></label>
+                <input asp-for="PasswordConfirm" class="form-control" />
+                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-10">Register</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" ></partial>
+}
+
+
+@*<form method="post" asp-controller="Account" asp-action="Register">
     <div asp-validation-summary="ModelOnly"></div>
-    <br/>
-    <div class="container-md align-content-md-center">
-        <dic class="row">
-    <div class="col-2">
-        <label>LastName</label>
+    
+    <div class="mt-10">
+        <label asp-for="FirstName"></label><br/>
+        <input asp-for="FirstName"/>
+        <span asp-validation-for="FirstName"></span>
     </div>
-    <div class="col-10 pb-3">
-        @Html.TextBoxFor(x => x.LastName, new { @placeholder = "Martin" })
+    <div class="mt-10">
+        <label asp-for="LastName"></label><br/>
+        <input asp-for="LastName"/>
+        <span asp-validation-for="LastName"></span>
     </div>
-    <br/>
-
-    <div class="col-2">
-        <label>Email</label>
+    <div class="mt-10">
+        <label asp-for="Email"></label><br/>
+        <input asp-for="Email"/>
+        <span asp-validation-for="Email"></span>
     </div>
-    <div class="col-10 pb-3">
-        @Html.TextBoxFor(x => x.Email, new { @type = "email", @placeholder = "sssss@gmail.com" })
+  <div class="mt-10">
+        <label asp-for="RoleName"></label><br/>
+      @Html.DropDownListFor(m => m.RoleName, new List<SelectListItem>
+      {
+          new SelectListItem { Text = "Біженець", Value = "refugee" },
+          new SelectListItem { Text = "Волонтер", Value = "volunteer" },
+          new SelectListItem { Text = "Admin", Value = "admin" }
+      }, "Оберіть")
+        <span asp-validation-for="RoleName"></span>
     </div>
-
-    <br/>
-    <div class="form-group">
-        <label>FirstName</label>
-        @Html.TextBoxFor(x => x.FirstName, new { @placeholder = "Bob" })
+    <div class="mt-10">
+        <label asp-for="PhoneNumber"></label><br/>
+        <input asp-for="PhoneNumber"/>
+        <span asp-validation-for="PhoneNumber"></span>
     </div>
-    <br/>
-
-    <div class="form-group">
-        <label>PhoneNumber</label>
-        @Html.TextBoxFor(x => x.PhoneNumber, new { @type = "tel" })
+    <div class="mt-10">
+        <label asp-for="Password"></label><br/>
+        <input asp-for="Password"/>
+        <span asp-validation-for="Password"></span>
     </div>
-
-    <br/>
-    <div class="form-group">
-
-        @Html.DropDownListFor(m => m.RoleName, new List<SelectListItem>
-        {
-            new SelectListItem { Text = "Refugee", Value = "Refugee" },
-            new SelectListItem { Text = "Volunteer", Value = "Volunteer" }
-        }, "Please select", new { id = "drop", @class = "form-control" })
+    <div class="mt-10">
+        <label asp-for="PasswordConfirm"></label><br/>
+        <input asp-for="PasswordConfirm"/>
+        <span asp-validation-for="PasswordConfirm"></span>
     </div>
-    <br/>
-
-    <div class="form-group">
-        <label>Password</label>
-        @Html.TextBoxFor(x => x.Password, new { @type = "password" })
-    </div>
-
-    <br/>
-
-    <input type="submit" value="Register" class="btn btn-success"/>
-    </div>
+    <div class="mt-10">
+        <input class="mt-10" type="submit" value="Зареєструватися"/>
     </div>
 
-    </form>
+    </form>*@

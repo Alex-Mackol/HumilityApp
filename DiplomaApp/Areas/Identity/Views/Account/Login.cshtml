@@ -1,29 +1,41 @@
-﻿@using DiplomaApp.Areas.Identity.Models
-@model LoginViewModel
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model DiplomaApp.Areas.Identity.Models.LoginViewModel
 
  @{
-     Layout = "_Layout";
+     Layout = "~/Areas/Identity/Views/Account/_LoyautAccount.cshtml"; 
  }
 
 <h2>Log in</h2>
-<form method="post" asp-controller="Account" asp-action="Login"
-      asp-route-returnUrl="@Model.ReturnUrl">
-    <div asp-validation-summary="ModelOnly"></div>
-    <div>
-        <label asp-for="Email"></label><br />
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
+
+<div class="col-md-10 offset-1">
+    <div class="login-form-icon">
+        <i class="fas fa-user-circle fa-9x text-secondary"></i>
     </div>
-    <div>
-        <label asp-for="Password"></label><br />
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <label asp-for="RememberMe"></label><br />
-        <input asp-for="RememberMe" />
-    </div>
-    <div>
-        <input class="mt-10" type="submit" value="Sign in" />
-    </div>
-</form>
+    <form method="post" asp-controller="Account" asp-action="Login"
+          asp-route-returnUrl="@Model.ReturnUrl">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+                <input asp-for="Email" class="form-control" placeholder="Email Address" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-10">
+            <input asp-for="Password" class="form-control" placeholder="Password"/>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label asp-for="RememberMe">
+                    <input asp-for="RememberMe" />
+                    @Html.DisplayNameFor(m => m.RememberMe)
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block mt-10">Log in</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" ></partial>
+}

@@ -1,5 +1,7 @@
 using DiplomaApp.Data.Data;
 using DiplomaApp.Data.Models;
+using DiplomaApp.Services.Interfaces;
+using DiplomaApp.Services.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,6 +31,15 @@ builder.Services.AddIdentity<User, IdentityRole>(opts => {
     opts.User.RequireUniqueEmail = true;
 })
     .AddEntityFrameworkStores<IdentityContext>();
+
+//add services for db attributes
+builder.Services.AddScoped<IApartamentService, ApartamentService>();
+builder.Services.AddScoped<IRefugeeService, RefugeeService>();
+builder.Services.AddScoped<IVolunteerService, VolunteerService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

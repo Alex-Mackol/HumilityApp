@@ -15,7 +15,9 @@ namespace DiplomaApp.Services.Models
         public string Id { set; get; }
         public string RoleName { set; get; }
         public ICollection<string> RoleNames { set; get; }
-        public string UserName { set; get; }
+        public string FirstName { set; get; }
+        public string LastName { set; get; }
+        public string UserName => FirstName + LastName;
 
         public string Email { set; get; }
 
