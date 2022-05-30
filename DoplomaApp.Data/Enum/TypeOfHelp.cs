@@ -8,11 +8,11 @@ namespace DiplomaApp.Data.Enum
 {
     public enum TypeOfHelp
     {
-        Food,
-        Apartaments,
-        Clothes,
-        Medicines,
-        ChildrenGoods,
-        AnimalGoods
+        Food = 1,
+        Apartaments = 2,
+        Clothes = 3,
+        Medicines = 4,
+        ChildrenGoods = 5,
+        AnimalGoods = 6  
     }
 }

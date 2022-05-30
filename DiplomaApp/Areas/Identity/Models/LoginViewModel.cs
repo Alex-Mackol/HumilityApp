@@ -1,14 +1,14 @@
-﻿namespace DiplomaApp.Areas.Identity.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DiplomaApp.Areas.Identity.Models
 {
-    public class LoginViewModel : LoginInputModel
+    public class LoginViewModel
     {
-        public bool AllowRememberLogin { get; set; } = true;
-        public bool EnableLocalLogin { get; set; } = true;
-
-        public IEnumerable<ExternalProvider> ExternalProviders { get; set; } = Enumerable.Empty<ExternalProvider>();
-        public IEnumerable<ExternalProvider> VisibleExternalProviders => ExternalProviders.Where(x => !String.IsNullOrWhiteSpace(x.DisplayName));
-
-        public bool IsExternalLoginOnly => EnableLocalLogin == false && ExternalProviders?.Count() == 1;
-        public string ExternalLoginScheme => IsExternalLoginOnly ? ExternalProviders?.SingleOrDefault()?.AuthenticationScheme : null;
+        [Required]
+        public string Username { get; set; }
+        [Required]
+        public string Password { get; set; }
+        public bool RememberLogin { get; set; }
+        public string ReturnUrl { get; set; }
     }
 }

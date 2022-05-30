@@ -1,12 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DiplomaApp.Areas.Identity.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaApp.Areas.Identity.Controllers
 {
     [Area("Identity")]
     public class AccountController : Controller
     {
-        [Route("Identity/Account/Register")]
+        [HttpGet]
         public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(RegisterViewModel model)
         {
             return View();
         }

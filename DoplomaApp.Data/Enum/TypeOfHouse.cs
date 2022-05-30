@@ -8,7 +8,7 @@ namespace DiplomaApp.Data.Enum
 {
     public enum TypeOfHouse
     {
-        House,
-        Flat
+        House = 1,
+        Flat = 2
     }
 }

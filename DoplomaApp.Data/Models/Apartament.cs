@@ -18,6 +18,7 @@ namespace DiplomaApp.Data.Models
         public string Street { get; set; }
 
         public int VolunteerId { get; set; }
+        public Volunteer Volunteer { get; set; }
 
         public ushort RoomsAmount { get; set; }
 

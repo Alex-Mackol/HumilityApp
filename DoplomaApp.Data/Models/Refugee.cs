@@ -15,7 +15,7 @@ namespace DiplomaApp.Data.Models
 
         public ushort FamilyAmount { get; set; }
 
-        public ICollection<TypeOfHelp> Helps { get; set; }
+        public TypeOfHelp Helps { get; set; }
 
         public bool HasAnimal { get; set; }
     }
