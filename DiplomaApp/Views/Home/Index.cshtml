@@ -1,8 +1,92 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+ <div class="row g-5">
+      <div class="col-md-3">
+          <div class="position-sticky" style="top: 2rem;">
+              <div class="p-4 mb-3 bg-light rounded">
+                  <h4 class="fst-italic">О нас</h4>
+                  <p class="mb-0">Ми - сайт гуманітарної допомоги, який працює з людьми, які були вимушені покинути свої домівки
+                      та виїхати до інших міст. Все що від вас потребує - зарєструватия і вказати, що вам потрібно!
+                  </p>
+              </div>
+
+              <div class="p-4">
+                  <h4 class="fst-italic">Категорії товарів</h4>
+                  <ol class="list-unstyled mb-0">
+                       @foreach (var categories in ViewBag.Categories)
+              {
+                      <li>
+                          <a class="form-control" style="text-decoration: none"
+                             asp-route-CategoryName="@categories.Name" asp-action="Index">@categories.Name</a>
+                      </li>
+              }
+                  </ol>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-9">
+          <div class="row g-5 border-bottom"> 
+              <div class="col-4">
+                  <h3 class="pb-4 mb-4 fst-italic ">
+                      @ViewBag.CurrentCategory
+                  </h3>
+              </div>
+              @*<div class="col-sm-8" style="align-content:end">*@
+                  @*<div>
+                      @using (Html.BeginForm("Index", "Home"))
+                      {
+                          <div class="mb-3 input-group display-row">
+                               <span class="margin-5lr"> Find by name:</span>
+                              <input class="form-control" data-val="true" data-val-required="The FilterParametr field is required." id="FilterParametr" name="FilterParametr" type="text" value="@ViewBag.Filter"/> 
+                              <span class="margin-5lr"></span>
+                              <button type="submit" class="btn-primary btn-sm site-color" id="applyDesc">
+                              <i class="bi bi-search"></i>
+                              </button>
+                          </div>
+                          <div class="row">
+                              <div class="col-7">
+                              </div>
+                               <div class="col-5">
+                                  <span>Sorting by:</span>
+                                  @Html.DropDownListFor(m => m.SortedParametr, new List<SelectListItem>
+                                  { new SelectListItem{Text="Product Name A-Z", Value="ProductNameAZ"},
+                                      new SelectListItem{Text="Product Name Z-A", Value ="ProductNameZA"},
+                                      new SelectListItem{Text="Price Higher-Low", Value ="Price"},
+                                      new SelectListItem{Text="Price Low-Higher", Value="PriceDescend"}}, "Please select", new{id="drop"})
+                                  </div>
+                              </div>
+                         
+                      }
+                  </div>*@
+              </div>
+          @*</div>*@
+          <div class="row row-cols-1 row-cols-md-3 g-5">
+              @foreach (var product in ViewBag.Products)
+              {
+                  <div class="col-4">
+                      <div class="p-0 my-4 border">
+                          <a class="card text-center h-100" style="text-decoration: none" asp-route-Name="@product.Name" asp-action="Details">
+                              <img src="@product.ImageUrl" class="card-img-top"/>
+                              <div class="card-body">
+                                  <h4 class="card-title product-name">@product.Name</h4>
+                                  <span class="product-type">@product.Category</span>
+                                  <div class="row site-price-color">
+                                      <div class="col pt-1">
+                                          <span  style="font-size: 20px;">@string.Format("₴{0:n}", product.Price)</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+                  </div>
+              }
+          </div>
+      </div>
+  </div>
+
+  

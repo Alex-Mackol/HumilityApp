@@ -46,7 +46,6 @@
                     <option value="">Оберіть:</option>
                     <option value="refugee">Біженець</option>
                     <option value="volunteer">Волонтер</option>
-                    <option value="admin">Admin</option>
                 </select>
                 <span asp-validation-for="RoleName" class="text-danger"></span>
             </div>
@@ -74,53 +73,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" ></partial>
 }
-
-
-@*<form method="post" asp-controller="Account" asp-action="Register">
-    <div asp-validation-summary="ModelOnly"></div>
-    
-    <div class="mt-10">
-        <label asp-for="FirstName"></label><br/>
-        <input asp-for="FirstName"/>
-        <span asp-validation-for="FirstName"></span>
-    </div>
-    <div class="mt-10">
-        <label asp-for="LastName"></label><br/>
-        <input asp-for="LastName"/>
-        <span asp-validation-for="LastName"></span>
-    </div>
-    <div class="mt-10">
-        <label asp-for="Email"></label><br/>
-        <input asp-for="Email"/>
-        <span asp-validation-for="Email"></span>
-    </div>
-  <div class="mt-10">
-        <label asp-for="RoleName"></label><br/>
-      @Html.DropDownListFor(m => m.RoleName, new List<SelectListItem>
-      {
-          new SelectListItem { Text = "Біженець", Value = "refugee" },
-          new SelectListItem { Text = "Волонтер", Value = "volunteer" },
-          new SelectListItem { Text = "Admin", Value = "admin" }
-      }, "Оберіть")
-        <span asp-validation-for="RoleName"></span>
-    </div>
-    <div class="mt-10">
-        <label asp-for="PhoneNumber"></label><br/>
-        <input asp-for="PhoneNumber"/>
-        <span asp-validation-for="PhoneNumber"></span>
-    </div>
-    <div class="mt-10">
-        <label asp-for="Password"></label><br/>
-        <input asp-for="Password"/>
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div class="mt-10">
-        <label asp-for="PasswordConfirm"></label><br/>
-        <input asp-for="PasswordConfirm"/>
-        <span asp-validation-for="PasswordConfirm"></span>
-    </div>
-    <div class="mt-10">
-        <input class="mt-10" type="submit" value="Зареєструватися"/>
-    </div>
-
-    </form>*@

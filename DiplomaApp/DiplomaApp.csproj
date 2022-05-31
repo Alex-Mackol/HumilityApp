@@ -27,6 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DiplomaApp.Services\DiplomaApp.Services.csproj" />
     <ProjectReference Include="..\DoplomaApp.Data\DiplomaApp.Data.csproj" />
   </ItemGroup>

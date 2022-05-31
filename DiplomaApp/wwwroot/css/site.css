@@ -58,7 +58,7 @@ body {
     }
 }
 
-//login
+/*login*/
 div.login-logout-tab div.card-header {
       padding: 0px 0px 12px 0px;
   }
@@ -84,4 +84,50 @@ div.card-content {
 /*login form*/
 div.login-form-icon {
     text-align: center;
+}
+
+.site-color {
+    background: #46939c;
+    color: #ffffff;
+    border: none;
+}
+
+.site-color:hover {
+    background: darkcyan;
+    color: #ffffff
+}
+
+.site-price-color {
+    color: darkcyan
+}
+.product-name {
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+
+.product-type {
+    color: #595959;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.product-name .product-type {
+    display: block;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.filter {
+    margin: 20px 0 0 10px;
+}
+
+.price-format .price {
+    color: #595959;
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 16px;
 }

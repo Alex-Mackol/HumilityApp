@@ -9,87 +9,38 @@ namespace MakeUpShop.SeedData;
 
 public static class SeedData
 {
-    //public static void ScriptToCreateDBData(IServiceProvider serviceProvider)
-    //{
-    //    using (var context = new ApplicationContext(serviceProvider.GetRequiredService<DbContextOptions<ApplicationContext>>()))
-    //    {
-    //        var images = new List<MediaTypeNames.Image>
-    //        {
-    //            //ProductNomenclatures
-    //            new MediaTypeNames.Image {Name = "armani-my-way.png", Url = "/img/products/armani-my-way.png"},
-    //            new MediaTypeNames.Image {Name = "chanel-gabrielle.png", Url = "/img/products/chanel-gabrielle.png"},
-    //            new MediaTypeNames.Image {Name = "carolina-herrera-good-girl.png", Url = "/img/products/carolina-herrera-good-girl.png"},
-    //        };
+    public static void ScriptToCreateDBData(IServiceProvider serviceProvider)
+    {
+        using (var context =
+               new ApplicationContext(serviceProvider.GetRequiredService<DbContextOptions<ApplicationContext>>()))
+        {
+            var categoties = new List<Category>
+            {
+                new Category { Name = "Одяг" },
+                new Category { Name = "Дитячі товари" },
+                new Category { Name = "Товари для тварин" },
+                new Category { Name = "Іжа" }
+            };
+
+            var products = new List<Product>
+            {
+                new Product{Name = "Яловичина консерва", Category = categoties[3], Price = 80,ImageUrl = "/img/products/beaf.jpg", IsAvailable = true},
+                new Product{Name = "Куряча консерва", Category = categoties[3],Price = 60, ImageUrl = "/img/products/chicken.jpg", IsAvailable = true},
+                new Product{Name = "Коляска Chicco Urban", Category = categoties[1], Price = 500,ImageUrl = "/img/products/chicco_urban.jpg", IsAvailable = true},
+                new Product{Name = "Велосипед Frozen", Category = categoties[1],Price = 550, ImageUrl = "/img/products/velo_pink.jpg", IsAvailable = true},
+                new Product{Name = "Корм для собаки Flora", Category = categoties[2],Price = 120, ImageUrl = "/img/products/dog_food_flora.jpg", IsAvailable = true},
+                new Product{Name = "Переноска для тварин", Category = categoties[2],Price = 255, ImageUrl = "/img/products/perenoska.jpg", IsAvailable = true},
+                new Product{Name = "Футболка чорна", Category = categoties[0],Price = 180, ImageUrl = "/img/products/shirt1.jpg", IsAvailable = true},
+                new Product{Name = "Джинси сірі", Category = categoties[0],Price = 360, ImageUrl = "/img/products/jeans.png", IsAvailable = true}
+            };
 
 
-    //        var brands = new List<Brand>
-    //                {
-    //                    new Brand {Name = "Armani", City = "Milan", ImageUrl = "/img/brands/Armani.png"},
-    //                    new Brand {Name ="Chanel", City = "Paris", ImageUrl = "/img/brands/Chanel.png"},
-    //                    new Brand{Name = "Carolina Herrera",City = "New York City", ImageUrl = "/img/brands/Carolina Herrera.png"}
-    //                };
+            context.Categories.AddRange(categoties);
+            context.Products.AddRange(products);
+            context.SaveChanges();
+        }
 
-    //        var types = new List<TypeProduct>
-    //                {
-    //                    new TypeProduct {Name = "pafum water"}
-    //                };
-    //        var filters = new List<Filter>
-    //                {
-    //                    new Filter {Name = "For her"}
-    //                };
-    //        var bottles = new List<Bottle>
-    //                {
-    //                    new Bottle {ContainerSize = "мл"}
-    //                };
-    //        var productNames = new List<ProductName>
-    //                {
-    //                    new ProductName{Name = "My Way"},
-    //                    new ProductName{Name = "Chanel Gabrielle"},
-    //                    new ProductName{Name = "Carolina Herrera"}
-    //                };
-    //        var products = new List<Product>
-    //        {
-    //            new Product
-    //            {
-    //                ProductName = productNames[0], Country = Country.Italy, Brand = brands[0], Type = types[0],
-    //                Sum = 2458, ProductAmounts = 30, Bottle = bottles[0], ProductInStocks = 100
-    //            },
-    //            new Product
-    //            {
-    //                ProductName = productNames[0], Country = Country.Italy, Brand = brands[0], Type = types[0],
-    //                Sum = 3497, ProductAmounts = 50, Bottle = bottles[0], ProductInStocks = 100
-    //            },
-    //            new Product
-    //            {
-    //                ProductName = productNames[1], Country = Country.France, Brand = brands[1], Type = types[0],
-    //                Sum = 2597, ProductAmounts = 35, Bottle = bottles[0], ProductInStocks = 50
-    //            },
-    //            new Product
-    //            {
-    //                ProductName = productNames[2], Country = Country.USA, Brand = brands[2], Type = types[0],
-    //                Sum = 5470, ProductAmounts = 30, Bottle = bottles[0], ProductInStocks = 150
-    //            }
-    //        };
-
-
-    //        products[0].Images.Add(images[0]);
-    //        products[1].Images.Add(images[0]);
-    //        products[2].Images.Add(images[1]);
-    //        products[3].Images.Add(images[2]);
-            
-    //        context.Images.AddRange(images);
-    //        //context.BrandImages.AddRange(brandImages);
-    //        context.Brands.AddRange(brands);
-    //        context.TypeProducts.AddRange(types);
-    //        context.Filters.AddRange(filters);
-    //        context.Products.AddRange(products);
-    //        context.ProductNames.AddRange(productNames);
-    //        context.Bottles.AddRange(bottles);
-
-    //        context.SaveChanges();
-    //    }
-
-    //}
+    }
 
     public static async Task ScriptToCreateIdentityDBAsync(IServiceProvider serviceProvider, IRoleService roleService)
     {

@@ -36,6 +36,8 @@ builder.Services.AddIdentity<User, IdentityRole>(opts => {
 builder.Services.AddScoped<IApartamentService, ApartamentService>();
 builder.Services.AddScoped<IRefugeeService, RefugeeService>();
 builder.Services.AddScoped<IVolunteerService, VolunteerService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 

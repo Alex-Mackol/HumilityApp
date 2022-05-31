@@ -33,6 +33,7 @@ namespace DiplomaApp.Areas.Identity.Controllers
                 var userDto = mapper.Map<UserDto>(model);
                 if (await userService.IsUserCreated(userDto, model.Password))
                 {
+                    //Todo: create volunteer or refugee
                     return RedirectToAction("Index", "Home", new {area = ""});
                 }
                 else

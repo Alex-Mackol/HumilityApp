@@ -49,6 +49,7 @@ namespace DiplomaApp.Services.Services
         }
 
         public async Task<bool> IsUserCreated(UserDto userDto, string password)
+            //Todo: on result succeeded use Ivolunteer/Irefugee service to add 
         {
             bool isCreated = false;
             var user = mapper.Map<User>(userDto);

@@ -12,6 +12,13 @@ namespace DiplomaApp.Services.Profile
     {
         public MapperProfile()
         {
+            CreateMap<Product, ProductDto>()
+                .ForMember(dst => dst.Category, act => act.MapFrom(src => src.Category.Name))
+                .ReverseMap();
+
+            CreateMap<CategoryDto, Category>()
+                .ForMember(dst => dst.Products, act => act.Ignore())
+                .ReverseMap();
             //User
             CreateMap<User, UserDto>().ReverseMap();
             //Role
