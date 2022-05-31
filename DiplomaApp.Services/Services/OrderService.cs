@@ -46,7 +46,9 @@ namespace DiplomaApp.Services.Services
 
         public void Delete(ushort id)
         {
-            throw new NotImplementedException();
+            unitOfWork.Orders.Delete(id);
+
+            unitOfWork.Save();
         }
 
         public IEnumerable<OrderDto> GetOrders(string id)

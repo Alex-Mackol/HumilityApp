@@ -21,6 +21,15 @@ namespace DiplomaApp.Controllers
 
             IEnumerable<OrderDto> orders = orderService.GetOrders(id);
 
+            decimal total = 0;
+
+            foreach (var item in orders)
+            {
+                total += item.ProductDto.Price;
+            }
+
+            ViewBag.Total = total;
+
             if (orders != null && orders.Count() > 0)
             {
                 return View(orders);
@@ -41,7 +50,8 @@ namespace DiplomaApp.Controllers
                 OrderDto order = new OrderDto
                 {
                     CartId = userId,
-                    ProductDto = productDto
+                    ProductDto = productDto,
+                    TotalPrice = productDto.Price
                 };
 
                 orderService.AddToCart(order);
