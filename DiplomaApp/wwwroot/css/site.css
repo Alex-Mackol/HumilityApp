@@ -25,6 +25,10 @@ body {
     margin-top: 10px
 }
 
+.image-cart {
+    width: 120px;
+    height: 120px;
+}
 
 #formVolunteer {
     display: none;

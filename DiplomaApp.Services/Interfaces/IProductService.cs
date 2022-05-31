@@ -8,7 +8,7 @@ public interface IProductService
 
     void Create(ProductDto product);
 
-    ProductDto Read(ushort id);
+    ProductDto Read(int id);
 
     void Update(ProductDto product);
 

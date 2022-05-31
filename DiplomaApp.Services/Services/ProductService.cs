@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DiplomaApp.Data.Data;
+using DiplomaApp.Data.Models;
 using DiplomaApp.Repositories.Interfaces;
 using DiplomaApp.Repositories.Models;
 using DiplomaApp.Services.Interfaces;
@@ -36,9 +37,11 @@ public class ProductService: IProductService
         throw new NotImplementedException();
     }
 
-    public ProductDto Read(ushort id)
+    public ProductDto Read(int id)
     {
-        throw new NotImplementedException();
+        Product product = productUnitOfWork.Products.Read(id);
+
+        return mapper.Map<ProductDto>(product);
     }
 
     public void Update(ProductDto product)

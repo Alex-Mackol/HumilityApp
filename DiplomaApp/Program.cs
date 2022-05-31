@@ -34,6 +34,7 @@ builder.Services.AddIdentity<User, IdentityRole>(opts => {
 
 //add services for db attributes
 builder.Services.AddScoped<IApartamentService, ApartamentService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IRefugeeService, RefugeeService>();
 builder.Services.AddScoped<IVolunteerService, VolunteerService>();
 builder.Services.AddScoped<IProductService, ProductService>();

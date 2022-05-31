@@ -1,28 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiplomaApp.Data.Models
+namespace DiplomaApp.Services.Models
 {
-    public class Order
+    public class OrderDto
     {
         public int Id { get; set; }
 
-        public int ProductId { get; set; }
+        public ProductDto ProductDto { get; set; }
 
-        [ForeignKey("ProductId")]
-        public Product Product { get; set; }
-
-        public ushort Count { get; set; }
+        public ushort Count { get; set; } = 1;
 
         public string CartId { get; set; }
 
         public bool IsCheckout { get; set; } = false;
 
         public decimal TotalPrice { get; set; }
-
     }
 }

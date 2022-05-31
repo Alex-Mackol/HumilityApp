@@ -16,7 +16,7 @@ namespace DiplomaApp.Repositories.Interfaces
 
         void Create(T item);
 
-        T Read(ushort id);
+        T Read(int id);
 
         void Update(T item);
 

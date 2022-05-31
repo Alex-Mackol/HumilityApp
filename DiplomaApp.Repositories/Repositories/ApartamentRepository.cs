@@ -39,7 +39,7 @@ namespace DiplomaApp.Repositories.Repositories
             throw new NotImplementedException();
         }
       
-        public Apartament Read(ushort id)
+        public Apartament Read(int id)
         {
             throw new NotImplementedException();
         }

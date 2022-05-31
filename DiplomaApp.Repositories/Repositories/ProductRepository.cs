@@ -35,9 +35,9 @@ public class ProductRepository:IRepository<Product>
         throw new NotImplementedException();
     }
 
-    public Product Read(ushort id)
+    public Product Read(int id)
     {
-        throw new NotImplementedException();
+        return _context.Products.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
     }
 
     public void Update(Product item)

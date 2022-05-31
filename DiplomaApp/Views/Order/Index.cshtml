@@ -1,0 +1,199 @@
+﻿@model IEnumerable<DiplomaApp.Services.Models.OrderDto>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post"> 
+    
+    <br /> 
+    
+    @if (Model == null)
+    {
+        <div class=""> 
+            <div class="card border mt-4 container"> 
+                <div class="card-header bg-dark text-light ml-0 row"> 
+                    <div class="col-6"> 
+                        <i class="fa fa-shopping-cart"></i> &nbsp; 
+                        Корзина 
+                    </div> 
+                    <div class="col-6 text-end"> 
+                        <a asp-action="BackToHome" class="btn btn-outline-warning btn-sm">Повернутись на головну сторінку</a> 
+                    </div> 
+                </div> 
+                <div class="card-body"> 
+                    <div class="d-none d-lg-block"> 
+                        <div class="row text-info"> 
+                            <div class="col-lg-2"> 
+                            </div> 
+                            <div class="col-lg-5"> 
+                                 
+                            </div> 
+                            <div class="col-lg-2"> 
+                                 
+                            </div> 
+                            <div class="col-lg-2"> 
+                                 
+                            </div> 
+                            <div class="col-lg-1">
+                                
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+ 
+                <hr /> 
+ 
+                <div class="row h-100"> 
+                    <div class="col-4 col-md-2 text-center py-2"> 
+                        <img src="" class="rounded" width="100%"/> 
+                    </div> 
+                    <div class="col-8 col-md-5"> 
+                        
+                    </div> 
+                    <div class="col-3 col-md-2 pt-md-4" style="font-size:11px;"> 
+                        <span style="font-size:17px;">   </span> 
+                    </div> 
+                    <div class="col-3 col-md-2 pt-md-4" style="font-size:11px;"> 
+                        <span style="font-size:17px;">  </span> 
+                    </div> 
+                    <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center" style="font-size:11px;"> 
+                        <a class="btn btn-outline-danger"> 
+                            <i class="fas fa-trash"></i> 
+                        </a> 
+                    </div> 
+                </div> 
+ 
+                <hr /> 
+ 
+                <div class="row">
+                    <div class="col-6 text-end"> 
+                        <span class="text-danger" style="font-size:21px;"> Всього: </span> 
+                    </div> 
+                </div> 
+                <div class="card-footer row"> 
+                    <div class="col-6 col-md-3 offset-md-6"> 
+                    </div> 
+                    <div class="col-6 col-md-3"> 
+                        <a asp-action="Chekout" asp-controller="Order" class="btn btn-success form-control"> 
+                            <span> Замовити </span> 
+                        </a> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    }
+    else
+    {
+        <div class=""> 
+                <div class="card border mt-4 container"> 
+                    <div class="card-header bg-dark text-light ml-0 row"> 
+                        <div class="col-6"> 
+                            <i class="fa fa-shopping-cart"></i> &nbsp; 
+                            Корзина 
+                        </div> 
+                        <div class="col-6 text-end"> 
+                            <a asp-action="BackToHome" class="btn btn-outline-warning btn-sm"> Повернутись на головну сторінку</a> 
+                        </div> 
+                    </div> 
+                    <div class="card-body"> 
+                        <div class="d-none d-lg-block"> 
+                            <div class="row text-info"> 
+                                <div class="col-sm-1"> 
+                                </div>
+                                <div class="col-sm-4"> 
+                                     
+                                </div> 
+                                <div class="col-sm-2"> 
+                                     
+                                </div>
+                                <div class="col-sm-2"> 
+                                    
+                                </div> 
+                                <div class="col-sm-2"> 
+                                     
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div> 
+ 
+                    <hr /> 
+                    @foreach (var item in Model)
+                    {
+                    <div class="row h-100 border-bottom"> 
+                        <div class="col-sm-1">  
+                        </div> 
+                        <div class="col-6 col-sm-4 align-content-center"> 
+                            <h6 class="js-ProductName"> @item.ProductDto.Name </h6> 
+
+                            <div class="image-cart" style="width: 100%;">
+                                <img class="image-cart" src="@item.ProductDto.ImageUrl"/>
+                            </div> 
+                            
+                            @*<div class="invalid-feedback" data-productId="@item.ProductDto.Id">
+                                @if(@item.Product.ProductInStocks != 0)
+                                {
+                                    <span>These products are @item.Product.ProductInStocks in stock. Add less products!</span>
+                                }
+                                else{
+                                    <span>These products are out of stock. They will be deleted from the order after checkout!</span>
+                                }
+                            </div>*@
+
+                        </div> 
+                        <div class="col-3 col-sm-2 pt-md-4" style="font-size:11px;"> 
+                            <span style="font-size:17px;"> @item.ProductDto.Category </span> 
+                        </div> 
+
+                       <div class="col-3 col-sm-2 pt-md-4" style="font-size:11px;"> 
+                           <span style="font-size: 17px;" class="js-productSum">
+                                @item.ProductDto.Price
+                           </span> 
+                        </div> 
+                       @* <div class="col-3 col-sm-2 pt-md-4" style="font-size:11px;"> 
+                            <span style="font-size: 17px;" class="js-productCount" data-productId="@item.Product.Id" data-amount="@item.Count">
+                                 @item.Count
+                            </span> 
+                        </div>  *@
+                        <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center" style="font-size:11px;"> 
+                            <a asp-route-id="@item.Id" asp-action="Delete" asp-controller="Order" class="btn btn-outline-danger"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                </svg> 
+                            </a> 
+                        </div> 
+                    </div> 
+                    }
+
+                    <hr /> 
+ 
+                    <div class="row">
+                        <div class="col-6 text-end"> 
+                            <span class="text-danger js-TotalPrice" style="font-size:21px;"> Всього :  </span> 
+                        </div> 
+                    </div> 
+                    <div class="card-footer row"> 
+                        <div class="col-6 col-md-3 offset-md-6"> 
+                        </div> 
+                        <div class="col-6 col-md-3"> 
+                            <a @*asp-action="Chekout" *@class="btn btn-success form-control" data-toggle="modal" id="checkBtn" onclick="onCheck()">
+
+                                <span>Checkout</span>
+                            </a> 
+                        </div> 
+                        <div id="myModal" class="modal">
+
+                          <!-- Modal content -->
+                          <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p>Some text in the Modal..</p>
+                          </div>
+
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+    }
+</form>

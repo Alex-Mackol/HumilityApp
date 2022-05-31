@@ -1,6 +1,7 @@
 ﻿using DiplomaApp.Data.Data;
 using DiplomaApp.Data.Models;
 using DiplomaApp.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiplomaApp.Repositories.Repositories;
 
@@ -15,7 +16,7 @@ public class OrderRepository:IRepository<Order>
 
     public IEnumerable<Order> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Orders.Include(x => x.Product).ToList();
     }
 
     public IEnumerable<string> GetEntityNames()
@@ -30,21 +31,23 @@ public class OrderRepository:IRepository<Order>
 
     public void Create(Order item)
     {
-        throw new NotImplementedException();
+        _context.Orders.Add(item);
     }
 
-    public Order Read(ushort id)
+    public Order Read(int id)
     {
-        throw new NotImplementedException();
+        return _context.Orders.FirstOrDefault(x => x.Id == id);
     }
 
     public void Update(Order item)
     {
-        throw new NotImplementedException();
+        _context.Orders.Update(item);
     }
 
     public void Delete(ushort id)
     {
-        throw new NotImplementedException();
+        Order order = Read(id);
+
+        _context.Orders.Remove(order);
     }
 }

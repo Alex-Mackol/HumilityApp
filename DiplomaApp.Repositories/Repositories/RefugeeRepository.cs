@@ -27,7 +27,7 @@ namespace DiplomaApp.Repositories.Repositories
             throw new NotImplementedException();
         }
 
-        public Refugee Read(ushort id)
+        public Refugee Read(int id)
         {
             throw new NotImplementedException();
         }

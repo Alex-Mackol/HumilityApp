@@ -31,7 +31,7 @@ namespace DiplomaApp.Repositories.Repositories
             throw new NotImplementedException();
         }
 
-        public Volunteer Read(ushort id)
+        public Volunteer Read(int id)
         {
             throw new NotImplementedException();
         }

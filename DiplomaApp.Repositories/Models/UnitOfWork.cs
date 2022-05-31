@@ -21,6 +21,7 @@ public class UnitOfWork: IUnitOfWork
     public IRepository<Apartament> Apartaments => apartamentRepository ??= new ApartamentRepository(context);
     public IRepository<Refugee> Refugees => refugeeRepository ??= new RefugeeRepository(context);
     public IRepository<Volunteer> Volunteers => volunteerRepository ??= new VolunteerRepository(context);
+
     public void Save()
     {
         context.SaveChanges();
