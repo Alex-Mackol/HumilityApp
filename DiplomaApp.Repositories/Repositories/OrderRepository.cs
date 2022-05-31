@@ -44,7 +44,7 @@ public class OrderRepository:IRepository<Order>
         _context.Orders.Update(item);
     }
 
-    public void Delete(ushort id)
+    public void Delete(int id)
     {
         Order order = Read(id);
 

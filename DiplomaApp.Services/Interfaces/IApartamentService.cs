@@ -9,6 +9,9 @@ namespace DiplomaApp.Services.Interfaces
 {
     public interface IApartamentService
     {
-        public IEnumerable<ApartamentDto> GetAparatments();
+        IEnumerable<ApartamentDto> GetAparatments();
+        IEnumerable<ApartamentDto> GetAparatments(int volunteerId);
+        void CreateApart(ApartamentDto apartamentDto);
+        ApartamentDto Delete(int id);
     }
 }

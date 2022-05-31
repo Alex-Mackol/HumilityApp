@@ -9,7 +9,7 @@ using DiplomaApp.Data.Data;
 
 namespace DiplomaApp.Repositories.Repositories
 {
-    public class VolunteerRepository : IRepository<Volunteer>
+    public class VolunteerRepository : IVolunteerRepository
     {
         private readonly ApplicationContext context;
         public VolunteerRepository(ApplicationContext context)
@@ -31,9 +31,9 @@ namespace DiplomaApp.Repositories.Repositories
             throw new NotImplementedException();
         }
 
-        public Volunteer Read(int id)
+        public Volunteer Read(string id)
         {
-            throw new NotImplementedException();
+            return context.Volunteers.Where(v => v.UserId == id).FirstOrDefault();
         }
 
         public void Create(Volunteer item)
@@ -45,7 +45,7 @@ namespace DiplomaApp.Repositories.Repositories
         {
             throw new NotImplementedException();
         }
-        public void Delete(ushort id)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

@@ -8,7 +8,7 @@ public interface IUnitOfWork
 
     IRepository<Refugee> Refugees { get; }
 
-    IRepository<Volunteer> Volunteers { get; }
+    IVolunteerRepository Volunteers { get; }
 
     void Save();
 }

@@ -23,6 +23,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\" />
     <Folder Include="Models\HelpRefugeeModels\" />
+    <Folder Include="Models\ApartamentViewModels\" />
     <Folder Include="Profile\" />
   </ItemGroup>
 

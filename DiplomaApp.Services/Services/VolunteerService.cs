@@ -22,6 +22,14 @@ namespace DiplomaApp.Services.Services
             unitOfWork = new UnitOfWork(context);
             this.mapper = mapper;
         }
+
+        public VolunteerDto GetVolunteer(string userId)
+        {
+            var volunteer = unitOfWork.Volunteers.Read(userId);
+
+            return mapper.Map<VolunteerDto>(volunteer);
+        }
+
         public void Create(UserDto user)
         {
             Volunteer volunteer = new Volunteer

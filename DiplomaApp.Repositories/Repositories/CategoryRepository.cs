@@ -46,7 +46,7 @@ public class CategoryRepository:IRepository<Category>
         throw new NotImplementedException();
     }
 
-    public void Delete(ushort id)
+    public void Delete(int id)
     {
         throw new NotImplementedException();
     }

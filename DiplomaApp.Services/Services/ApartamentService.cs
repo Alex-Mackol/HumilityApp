@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using DiplomaApp.Data.Data;
+using DiplomaApp.Data.Enum;
+using DiplomaApp.Data.Models;
 using DiplomaApp.Repositories.Interfaces;
 using DiplomaApp.Repositories.Models;
 using DiplomaApp.Services.Interfaces;
@@ -24,10 +26,60 @@ namespace DiplomaApp.Services.Services
 
         public IEnumerable<ApartamentDto> GetAparatments()
         {
-            var aparts = unitOfWork.Apartaments.GetAll();
+            var aparts = unitOfWork.Apartaments.GetAll().Where(a=>a.IsAvailable==true);
             var apartsDtos = mapper.Map<IEnumerable<ApartamentDto>>(aparts);
 
             return apartsDtos;
+        }
+
+        public IEnumerable<ApartamentDto> GetAparatments(int volunteerId)
+        {
+            var aparts = unitOfWork.Apartaments.GetAll().Where(a=>a.VolunteerId == volunteerId && a.IsAvailable==true);
+            var apartsDtos = mapper.Map<IEnumerable<ApartamentDto>>(aparts);
+
+            return apartsDtos;
+        }
+
+        public void CreateApart(ApartamentDto apartamentDto)
+        {
+            var apartament = new Apartament
+            {
+                Price = apartamentDto.Price,
+                Street = apartamentDto.Street,
+                VolunteerId = apartamentDto.VolunteerId,
+                RoomsAmount = apartamentDto.RoomsAmount,
+                PeopleCount = apartamentDto.PeopleCount
+            };
+            switch (apartamentDto.TypeOfHouse)
+            {
+                case "Дім":
+                    apartament.TypeOfHouse = TypeOfHouse.House;
+                    break;
+                default:
+                    apartament.TypeOfHouse = TypeOfHouse.Flat;
+                    break;
+            }
+
+            if (!unitOfWork.Apartaments.IsEntityExist(apartament))
+            {
+                apartament.IsAvailable = true;
+                unitOfWork.Apartaments.Create(apartament);
+                unitOfWork.Save();
+            }
+        }
+
+        public ApartamentDto Delete(int id)
+        {
+            var apartament = unitOfWork.Apartaments.Read(id);
+            if (apartament == null)
+            {
+                throw new ArgumentException("The object doesn`t find!");
+            }
+
+            unitOfWork.Apartaments.Delete(apartament.Id);
+            unitOfWork.Save();
+
+            return mapper.Map<ApartamentDto>(apartament);
         }
     }
 }

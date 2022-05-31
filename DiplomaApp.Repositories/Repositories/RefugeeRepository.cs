@@ -41,7 +41,7 @@ namespace DiplomaApp.Repositories.Repositories
             context.Refugees.Add(item);
         }
 
-        public void Delete(ushort id)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

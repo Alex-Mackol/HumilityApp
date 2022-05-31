@@ -20,6 +20,6 @@ namespace DiplomaApp.Repositories.Interfaces
 
         void Update(T item);
 
-        void Delete(ushort id);
+        void Delete(int id);
     }
 }

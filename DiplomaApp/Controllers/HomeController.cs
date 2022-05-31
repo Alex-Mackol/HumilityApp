@@ -27,8 +27,8 @@ namespace DiplomaApp.Controllers
 
         public IActionResult Index(string category)
         {
-            //SeedData.ScriptToCreateIdentityDBAsync(serviceProvider, roleService);
-           // SeedData.ScriptToCreateDBData(serviceProvider);
+           //SeedData.ScriptToCreateIdentityDBAsync(serviceProvider, roleService);
+           //SeedData.ScriptToCreateDBData(serviceProvider);
             ViewBag.Products = productService.GetProducts(category);
             ViewBag.Categories = categoryService.GetCategories();
             ViewBag.CurrentCategory = string.IsNullOrEmpty(category) ? "Всі товари" : category;
