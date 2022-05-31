@@ -52,9 +52,23 @@ namespace DiplomaApp.Services.Services
             return usersDto;
         }
 
-        public IEnumerable<UserDto> GetUser(string las, string first, string email)
+        public async Task<UserDto> GetUser(string email)
         {
-            throw new NotImplementedException();
+            User signedUser = await userUnitOfWork.UserManager.FindByEmailAsync(email);
+            if (signedUser == null)
+            {
+                signedUser = await userUnitOfWork.UserManager.FindByNameAsync(email);
+
+            }
+
+            return mapper.Map<UserDto>(signedUser);
+        }
+
+        public async Task<UserDto> GetUserById(string id)
+        {
+            User signedUser = await userUnitOfWork.UserManager.FindByIdAsync(id);
+
+            return mapper.Map<UserDto>(signedUser);
         }
 
         public async Task<bool> IsUserCreated(UserDto userDto, string password)
@@ -65,7 +79,7 @@ namespace DiplomaApp.Services.Services
             var result = await userUnitOfWork.UserManager.CreateAsync(user, password);
             if (result.Succeeded)
             {
-                await userUnitOfWork.SignInManager.SignInAsync(user, false);
+                await userUnitOfWork.SignInManager.SignInAsync(user, true);
                 IdentityRole addedRole = await roleService.FindByName(userDto.RoleName);
                 await userUnitOfWork.UserManager.AddToRoleAsync(user, addedRole.Name);
 

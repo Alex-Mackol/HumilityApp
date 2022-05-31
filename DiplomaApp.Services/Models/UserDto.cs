@@ -17,9 +17,11 @@ namespace DiplomaApp.Services.Models
         public ICollection<string> RoleNames { set; get; }
         public string FirstName { set; get; }
         public string LastName { set; get; }
-        public string UserName => FirstName + LastName;
+        public string UserName => Email;
 
         public string Email { set; get; }
+
+        public string PhoneNumber { set; get; }
 
         public string Password { set; get; }
         public bool RememberMe { set; get; }

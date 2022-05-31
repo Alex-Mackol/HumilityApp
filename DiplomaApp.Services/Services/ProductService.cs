@@ -17,9 +17,15 @@ public class ProductService: IProductService
         this.mapper = mapper;
     }
 
-    public IEnumerable<ProductDto> GetProducts()
+    public IEnumerable<ProductDto> GetProducts(string category)
     {
         var products = productUnitOfWork.Products.GetAll();
+
+        if (!string.IsNullOrEmpty(category))
+        {
+            products = products.Where(p => p.Category.Name.ToLower() == category.ToLower()).ToList();
+        }
+
         var productsDtos = mapper.Map<IEnumerable<ProductDto>>(products);
 
         return productsDtos;

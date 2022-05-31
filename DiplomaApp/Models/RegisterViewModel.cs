@@ -19,7 +19,7 @@ namespace DiplomaApp.Models
         public string LastName { get; set; }
 
         [Required]
-        [DataType(DataType.PhoneNumber)]
+        [DataType(DataType.Text)]
         [Display(Name = "Номер телефону")]
         public string PhoneNumber { get; set; }
 

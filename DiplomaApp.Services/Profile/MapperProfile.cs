@@ -16,6 +16,11 @@ namespace DiplomaApp.Services.Profile
                 .ForMember(dst => dst.Category, act => act.MapFrom(src => src.Category.Name))
                 .ReverseMap();
 
+            CreateMap<Apartament, ApartamentDto>()
+                .ForMember(dst => dst.VolunteerPhone, act => act.MapFrom(src => src.Volunteer.PhoneNumber))
+                .ForMember(dst => dst.VolunterName, act => act.MapFrom(src => src.Volunteer.Name))
+                .ForMember(dst => dst.TypeOfHouse, act => act.MapFrom(src => src.TypeOfHouse));
+
             CreateMap<CategoryDto, Category>()
                 .ForMember(dst => dst.Products, act => act.Ignore())
                 .ReverseMap();
@@ -24,6 +29,12 @@ namespace DiplomaApp.Services.Profile
             //Role
             CreateMap<Role, RoleDto>()
                 .ForMember(dst => dst.Name, act => act.MapFrom(src => src.Name));
+
+            CreateMap<Refugee, RefugeesDto>()
+                .ForMember(dst => dst.Helps, act => act.MapFrom(src => src.Helps));
+            CreateMap<RefugeesDto, Refugee>()
+                .ForMember(dst => dst.Helps, act => act.Ignore());
+
         }
     }
 }

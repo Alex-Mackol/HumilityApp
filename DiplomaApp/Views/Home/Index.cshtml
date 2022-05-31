@@ -13,17 +13,22 @@
                       та виїхати до інших міст. Все що від вас потребує - зарєструватия і вказати, що вам потрібно!
                   </p>
               </div>
-
+            
               <div class="p-4">
                   <h4 class="fst-italic">Категорії товарів</h4>
                   <ol class="list-unstyled mb-0">
-                       @foreach (var categories in ViewBag.Categories)
-              {
                       <li>
-                          <a class="form-control" style="text-decoration: none"
-                             asp-route-CategoryName="@categories.Name" asp-action="Index">@categories.Name</a>
+                          <a class="form-control" style="text-decoration: none" asp-route-category="" asp-action="Index">Усі товари</a>
                       </li>
-              }
+                      @foreach (var categories in ViewBag.Categories)
+                      {
+                          <li>
+                              <a class="form-control" style="text-decoration: none"
+                                 asp-route-category="@categories.Name" asp-action="Index">
+                                  @categories.Name
+                              </a>
+                          </li>
+                      }
                   </ol>
               </div>
           </div>
@@ -71,7 +76,7 @@
                   <div class="col-4">
                       <div class="p-0 my-4 border">
                           <a class="card text-center h-100" style="text-decoration: none" asp-route-Name="@product.Name" asp-action="Details">
-                              <img src="@product.ImageUrl" class="card-img-top"/>
+                              <img src="@product.ImageUrl" class="card-img-top image-card"/>
                               <div class="card-body">
                                   <h4 class="card-title product-name">@product.Name</h4>
                                   <span class="product-type">@product.Category</span>

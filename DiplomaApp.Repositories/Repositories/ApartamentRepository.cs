@@ -1,6 +1,7 @@
 ﻿using DiplomaApp.Data.Data;
 using DiplomaApp.Repositories.Interfaces;
 using DiplomaApp.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiplomaApp.Repositories.Repositories
 {
@@ -13,7 +14,9 @@ namespace DiplomaApp.Repositories.Repositories
         }
         public IEnumerable<Apartament> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Apartaments
+                .Include(a=>a.Volunteer)
+                .ToList();
         }
 
         public IEnumerable<string> GetEntityNames()

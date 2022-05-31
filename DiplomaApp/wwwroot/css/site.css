@@ -131,3 +131,8 @@ div.login-form-icon {
     font-weight: 400;
     line-height: 16px;
 }
+
+.image-card {
+    width: 285px;
+    height: 320px;
+}

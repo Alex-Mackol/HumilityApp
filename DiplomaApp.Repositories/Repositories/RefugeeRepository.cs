@@ -34,7 +34,7 @@ namespace DiplomaApp.Repositories.Repositories
 
         public void Update(Refugee item)
         {
-            throw new NotImplementedException();
+            context.Refugees.Update(item);
         }
         public void Create(Refugee item)
         {

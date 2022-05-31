@@ -4,7 +4,7 @@ namespace DiplomaApp.Services.Interfaces;
 
 public interface IProductService
 {
-    IEnumerable<ProductDto> GetProducts();
+    IEnumerable<ProductDto> GetProducts(string category);
 
     void Create(ProductDto product);
 

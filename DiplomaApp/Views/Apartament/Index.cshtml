@@ -1,33 +1,56 @@
-﻿@model IEnumerable<DiplomaApp.Data.Models.Apartament>
+﻿@model IEnumerable<DiplomaApp.Services.Models.ApartamentDto>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
-
+@if (User.IsInRole("volunteer"))
+{
+    <div class="row">
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <a type="button" class="btn btn-warning">Додати оголошення</a>
+            <span style="margin-left: 10px"></span>
+            <a type="button" class="btn btn-success" asp-action="Index" asp-route-adds="@ViewBag.Volunteer.Email">Мої оголошення</a>
+        </div>
+    </div>
+}
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">#</th>
         <th scope="col"> Квартира\Дім </th>
         <th scope="col"> Ціна </th>
         <th scope="col"> Вулиця </th>
         <th scope="col"> Телефон Волонтера </th>
         <th scope="col"> Им'я </th>
+        <th scope="col"> Кількість людей </th>
         <th scope="col"> Кількість кімнат </th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        
-    </tr>
+        @foreach (var item in Model)
+        {
+            <td>
+                @item.TypeOfHouse
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                @item.Street
+            </td>
+            <td>
+                @item.VolunteerPhone
+            </td>
+            <td>
+                @item.VolunterName
+            </td>
+            <td>
+                @item.PeopleCount
+            </td>
+            <td>
+                @item.RoomsAmount
+            </td>
+        }
     </tbody>
 </table>

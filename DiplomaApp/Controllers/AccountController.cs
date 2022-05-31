@@ -36,21 +36,18 @@ namespace DiplomaApp.Controllers
                 var userDto = mapper.Map<UserDto>(model);
                 if (await userService.IsUserCreated(userDto, model.Password))
                 {
-                    var users = userService.GetUsers();
+                    if (await userService.IsUserExist(userDto))
+                    {
+                        if (!string.IsNullOrEmpty(userDto.Id))
+                        {
+                            if (model.RoleName.ToLower() == "volunteer")
+                            {
+                                volunteerService.Create(userDto);
+                            }
+                        }
 
-                    //if (!string.IsNullOrEmpty(userId))
-                    //{
-                    //    if (model.RoleName.ToLower() == "refugee")
-                    //    {
-                    //        refugeeService.Create(userId);
-                    //    }
-                    //    if(model.RoleName.ToLower() == "volunteer")
-                    //    {
-                    //        volunteerService.Create(userId);
-                    //    }
-                    //}
-                    //Todo: create volunteer or refugee
-                    return RedirectToAction("Index", "Home", new {area = ""});
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
@@ -78,7 +75,7 @@ namespace DiplomaApp.Controllers
                 var userDto = mapper.Map<UserDto>(model);
                 if (await userService.IsUserExist(userDto))
                 {
-                    return RedirectToAction("Index", "Home", new {area = ""});
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -89,11 +86,11 @@ namespace DiplomaApp.Controllers
             return View(model);
         }
 
-        [Route("/Identity/Account/Logout")]
+        [Route("/Account/Logout")]
         public async Task<IActionResult> Logout()
         {
             await userService.UserLogOut();
-            return RedirectToAction("Index", "Home", new { area = "" });
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -10,5 +10,6 @@ namespace DiplomaApp.Services.Interfaces
     public interface IRefugeeService
     {
         void Create(string userId);
+        void Update(RefugeesDto refugeesDto, UserDto userDto);
     }
 }
