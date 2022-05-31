@@ -13,17 +13,27 @@ namespace DiplomaApp.Services.Profile
         public MapperProfile()
         {
             CreateMap<Product, ProductDto>()
-                .ForMember(dst => dst.Category, act => act.MapFrom(src => src.Category.Name))
-                .ReverseMap();
+                .ForMember(dst => dst.Category, act => act.MapFrom(src => src.Category.Name));
+            CreateMap<ProductDto, Product>()
+                .ForPath(dst => dst.Category.Name, act => act.MapFrom(src => src.Category));
 
             CreateMap<Apartament, ApartamentDto>()
                 .ForMember(dst => dst.VolunteerPhone, act => act.MapFrom(src => src.Volunteer.PhoneNumber))
                 .ForMember(dst => dst.VolunterName, act => act.MapFrom(src => src.Volunteer.Name))
                 .ForMember(dst => dst.TypeOfHouse, act => act.MapFrom(src => src.TypeOfHouse));
 
+            CreateMap<ApartamentDto, Apartament>()
+                .ForPath(dst => dst.Volunteer.Id, act => act.MapFrom(src => src.VolunteerId))
+                .ForPath(dst => dst.Volunteer.Name, act => act.MapFrom(src => src.VolunterName))
+                .ForPath(dst => dst.Volunteer.PhoneNumber, act => act.MapFrom(src => src.VolunteerPhone))
+                .ForPath(dst => dst.TypeOfHouse, act => act.Ignore());
+
             CreateMap<CategoryDto, Category>()
                 .ForMember(dst => dst.Products, act => act.Ignore())
                 .ReverseMap();
+            CreateMap<Category, CategoryDto>();
+
+            CreateMap<Volunteer, VolunteerDto>().ReverseMap();
             //User
             CreateMap<User, UserDto>().ReverseMap();
             //Role

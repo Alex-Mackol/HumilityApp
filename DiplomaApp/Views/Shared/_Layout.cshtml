@@ -29,11 +29,8 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Help" asp-action="HelpIndex">Зарєєструватися на допомогу</a>
                                 </li>
                             }
-                            <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Прихисток</a>
-                    </li>
                          <li>
-                         <a class="nav-link text-dark" href="/Apartament"> Апартаменти </a>
+                         <a class="nav-link text-dark" href="/Apartament"> Прихисток </a>
                     </li>
                 </ul>
             </div>
@@ -45,6 +42,10 @@
                         <strong>@User.Identity.Name</strong>
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                        <li>
+                                <a class="dropdown-item" asp-route-myposts="true" asp-controller="Apartament"
+                                asp-action="Index">Мої оголошення житла</a>
+                            </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

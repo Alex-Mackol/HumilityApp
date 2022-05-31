@@ -33,7 +33,7 @@ public class OrderRepository:IRepository<Order>
         throw new NotImplementedException();
     }
 
-    public Order Read(ushort id)
+    public Order Read(int id)
     {
         throw new NotImplementedException();
     }
@@ -43,7 +43,7 @@ public class OrderRepository:IRepository<Order>
         throw new NotImplementedException();
     }
 
-    public void Delete(ushort id)
+    public void Delete(int id)
     {
         throw new NotImplementedException();
     }

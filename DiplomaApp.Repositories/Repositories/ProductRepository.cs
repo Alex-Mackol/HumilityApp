@@ -35,7 +35,7 @@ public class ProductRepository:IRepository<Product>
         throw new NotImplementedException();
     }
 
-    public Product Read(ushort id)
+    public Product Read(int id)
     {
         throw new NotImplementedException();
     }
@@ -45,7 +45,7 @@ public class ProductRepository:IRepository<Product>
         throw new NotImplementedException();
     }
 
-    public void Delete(ushort id)
+    public void Delete(int id)
     {
         throw new NotImplementedException();
     }

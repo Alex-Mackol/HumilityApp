@@ -26,27 +26,33 @@ namespace DiplomaApp.Repositories.Repositories
 
         public bool IsEntityExist(Apartament entity)
         {
-            throw new NotImplementedException();
+            return context.Apartaments.Any(a => a.VolunteerId == entity.VolunteerId && a.Street == entity.Street &&
+                                                a.Price == entity.Price);
         }
 
         public void Create(Apartament item)
         {
-            throw new NotImplementedException();
+            context.Apartaments.Add(item);
         }
 
-        public void Delete(ushort id)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var apart = context.Apartaments.Find(id);
+            if (apart != null)
+            {
+                apart.IsAvailable = false;
+                context.Apartaments.Update(apart);
+            }
         }
       
-        public Apartament Read(ushort id)
+        public Apartament Read(int id)
         {
-            throw new NotImplementedException();
+            return context.Apartaments.Find(id);
         }
 
         public void Update(Apartament item)
         {
-            throw new NotImplementedException();
+            context.Apartaments.Update(item);
         }
     }
 }

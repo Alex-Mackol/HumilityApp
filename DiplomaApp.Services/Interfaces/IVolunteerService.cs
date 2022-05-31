@@ -9,6 +9,7 @@ namespace DiplomaApp.Services.Interfaces
 {
     public interface IVolunteerService
     {
+        VolunteerDto GetVolunteer(string userId);
         void Create(UserDto user);
     }
 }

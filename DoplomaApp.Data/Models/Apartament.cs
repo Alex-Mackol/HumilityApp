@@ -23,5 +23,6 @@ namespace DiplomaApp.Data.Models
         public ushort RoomsAmount { get; set; }
 
         public ushort PeopleCount { get; set;  }
+        public bool IsAvailable { get; set; }
     }
 }
