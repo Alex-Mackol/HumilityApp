@@ -6,6 +6,7 @@ using MakeUpShop.SeedData;
 
 namespace DiplomaApp.Controllers
 {
+    //[Route("/Home")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -27,7 +28,7 @@ namespace DiplomaApp.Controllers
         public IActionResult Index(string category)
         {
             //SeedData.ScriptToCreateIdentityDBAsync(serviceProvider, roleService);
-            //SeedData.ScriptToCreateDBData(serviceProvider);
+           // SeedData.ScriptToCreateDBData(serviceProvider);
             ViewBag.Products = productService.GetProducts();
             ViewBag.Categories = categoryService.GetCategories();
             ViewBag.CurrentCategory = string.IsNullOrEmpty(category) ? "Всі товари" : category;

@@ -12,6 +12,7 @@ namespace DiplomaApp.Services.Interfaces
         ICollection<string> ErrorsCollection { get; }
 
         Task<IEnumerable<UserDto>> GetUsers();
+        IEnumerable<UserDto> GetUser(string las, string first, string email);
 
         Task<bool> IsUserCreated(UserDto userDto, string password);
 

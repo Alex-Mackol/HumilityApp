@@ -19,13 +19,17 @@ namespace DiplomaApp.Services.Services
         private readonly IUserUnitOfWork userUnitOfWork;
         private readonly IMapper mapper;
         private readonly IRoleService roleService;
+
+        private readonly IRefugeeService refugeeService;
+        private readonly IVolunteerService volunteerService;
+
         private ICollection<string> errorsCollection;
 
-        public UserService(IdentityContext context, IMapper mapper, IRoleService roleService,
-                             UserManager<User> userManager, SignInManager<User> signInManager)
+        public UserService(IdentityContext context, IMapper mapper, IRoleService roleService, UserManager<User> userManager, SignInManager<User> signInManager)
         {
             this.mapper = mapper;
             this.roleService = roleService;
+           
             userUnitOfWork = new UserUnitOfWork(context, userManager, signInManager);
         }
 
@@ -48,6 +52,11 @@ namespace DiplomaApp.Services.Services
             return usersDto;
         }
 
+        public IEnumerable<UserDto> GetUser(string las, string first, string email)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> IsUserCreated(UserDto userDto, string password)
             //Todo: on result succeeded use Ivolunteer/Irefugee service to add 
         {
@@ -59,6 +68,7 @@ namespace DiplomaApp.Services.Services
                 await userUnitOfWork.SignInManager.SignInAsync(user, false);
                 IdentityRole addedRole = await roleService.FindByName(userDto.RoleName);
                 await userUnitOfWork.UserManager.AddToRoleAsync(user, addedRole.Name);
+
                 isCreated = true;
             }
             else

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DiplomaApp.Areas.Identity.Models
+namespace DiplomaApp.Models
 {
     public class RegisterViewModel
     {

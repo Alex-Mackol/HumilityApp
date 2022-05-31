@@ -1,5 +1,4 @@
-﻿using DiplomaApp.Areas.Identity.Models;
-using DiplomaApp.Data.Models;
+﻿using DiplomaApp.Data.Models;
 using DiplomaApp.Models;
 using DiplomaApp.Services.Models;
 

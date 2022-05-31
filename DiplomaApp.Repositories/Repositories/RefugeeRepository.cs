@@ -1,4 +1,5 @@
 ﻿
+using DiplomaApp.Data.Data;
 using DiplomaApp.Data.Models;
 using DiplomaApp.Repositories.Interfaces;
 
@@ -6,6 +7,11 @@ namespace DiplomaApp.Repositories.Repositories
 {
     public class RefugeeRepository : IRepository<Refugee>
     {
+        private readonly ApplicationContext context;
+        public RefugeeRepository(ApplicationContext context)
+        {
+            this.context = context;
+        }
         public IEnumerable<Refugee> GetAll()
         {
             throw new NotImplementedException();
@@ -32,7 +38,7 @@ namespace DiplomaApp.Repositories.Repositories
         }
         public void Create(Refugee item)
         {
-            throw new NotImplementedException();
+            context.Refugees.Add(item);
         }
 
         public void Delete(ushort id)

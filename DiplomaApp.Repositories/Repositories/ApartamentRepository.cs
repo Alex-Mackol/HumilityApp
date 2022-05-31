@@ -1,10 +1,16 @@
-﻿using DiplomaApp.Repositories.Interfaces;
+﻿using DiplomaApp.Data.Data;
+using DiplomaApp.Repositories.Interfaces;
 using DiplomaApp.Data.Models;
 
 namespace DiplomaApp.Repositories.Repositories
 {
     public class ApartamentRepository : IRepository<Apartament>
     {
+        private readonly ApplicationContext context;
+        public ApartamentRepository(ApplicationContext context)
+        {
+            this.context = context;
+        }
         public IEnumerable<Apartament> GetAll()
         {
             throw new NotImplementedException();

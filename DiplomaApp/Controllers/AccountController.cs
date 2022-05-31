@@ -1,22 +1,25 @@
 ﻿using AutoMapper;
-using DiplomaApp.Areas.Identity.Models;
 using DiplomaApp.Models;
 using DiplomaApp.Services.Interfaces;
 using DiplomaApp.Services.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DiplomaApp.Areas.Identity.Controllers
+namespace DiplomaApp.Controllers
 {
-    [Area("Identity")]
     public class AccountController : Controller
     {
         private readonly IUserService userService;
         private readonly IMapper mapper;
+        private readonly IRefugeeService refugeeService;
+        private readonly IVolunteerService volunteerService;
 
-        public AccountController(IUserService userService, IMapper mapper)
+        public AccountController(IUserService userService, IMapper mapper, IRefugeeService refugeeService,
+            IVolunteerService volunteerService)
         {
             this.userService = userService;
             this.mapper = mapper;
+            this.refugeeService = refugeeService;
+            this.volunteerService = volunteerService;
         }
 
         [HttpGet]
@@ -33,6 +36,19 @@ namespace DiplomaApp.Areas.Identity.Controllers
                 var userDto = mapper.Map<UserDto>(model);
                 if (await userService.IsUserCreated(userDto, model.Password))
                 {
+                    var users = userService.GetUsers();
+
+                    //if (!string.IsNullOrEmpty(userId))
+                    //{
+                    //    if (model.RoleName.ToLower() == "refugee")
+                    //    {
+                    //        refugeeService.Create(userId);
+                    //    }
+                    //    if(model.RoleName.ToLower() == "volunteer")
+                    //    {
+                    //        volunteerService.Create(userId);
+                    //    }
+                    //}
                     //Todo: create volunteer or refugee
                     return RedirectToAction("Index", "Home", new {area = ""});
                 }
