@@ -42,6 +42,11 @@ namespace DiplomaApp.Services.Services
 
         public void CreateApart(ApartamentDto apartamentDto)
         {
+            if (apartamentDto.Price < 0 && string.IsNullOrEmpty(apartamentDto.Street) &&
+                apartamentDto.PeopleCount < 0 && apartamentDto.RoomsAmount < 0)
+            {
+                throw new ArgumentException("Not valid data!");
+            }
             var apartament = new Apartament
             {
                 Price = apartamentDto.Price,

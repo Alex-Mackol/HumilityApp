@@ -5,21 +5,6 @@
 
 $(document).ready(function () {
 
-    //$('#btnRefugee').click(() => {
-    //    $('#btnVolunt').removeClass('active');
-    //    $('#formVolunteer').removeClass('open');
-
-    //    $('#btnRefugee').addClass('active');
-    //    $('#formRefugee').addClass('open');
-    //});
-
-    //$('#btnVolunt').click(() => {
-    //    $('#btnRefugee').removeClass('active');
-    //    $('#formRefugee').removeClass('open');
-
-    //    $('#btnVolunt').addClass('active');
-    //    $('#formVolunteer').addClass('open');
-    //});
 
     $('#btnSend').click(() => {
 
@@ -48,7 +33,9 @@ $(document).ready(function () {
                 if (response.success) {
                     alert(`${response.message}`);
                     window.location.href = "/Home";
-                } 
+                } else {
+                    alert(`Error : ${response.message}`);
+                }
             });
     });
 

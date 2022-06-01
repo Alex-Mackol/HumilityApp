@@ -75,7 +75,11 @@
             $.post("/Apartament/Delete",
                 { id: entityId },
                 function (response) {
-                    window.location.href = "/Apartament";
+                    if (response.succeed) {
+                        window.location.href = "/Apartament";
+                    } else {
+                        alert(`Error: ${response.message}`);
+                    }
                 });
         });
     });
