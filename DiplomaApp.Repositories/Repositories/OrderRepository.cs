@@ -21,12 +21,12 @@ public class OrderRepository:IRepository<Order>
 
     public IEnumerable<string> GetEntityNames()
     {
-        throw new NotImplementedException();
+        return _context.Orders.Select(o => o.CartId).ToList();
     }
 
     public bool IsEntityExist(Order entity)
     {
-        throw new NotImplementedException();
+        return _context.Orders.Any(x => x.CartId == entity.CartId && x.Product.Name == entity.Product.Name && x.Id != entity.Id);
     }
 
     public void Create(Order item)
@@ -47,7 +47,9 @@ public class OrderRepository:IRepository<Order>
     public void Delete(int id)
     {
         Order order = Read(id);
-
-        _context.Orders.Remove(order);
+        if (order != null)
+        {
+            _context.Orders.Remove(order);
+        }
     }
 }

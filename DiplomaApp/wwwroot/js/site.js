@@ -45,10 +45,10 @@ $(document).ready(function () {
         $.post("/Help/RegisterHelp",
             data,
             function(response) {
-                if (response.Success) {
+                if (response.success) {
                     alert(`${response.message}`);
                     window.location.href = "/Home";
-                }
+                } 
             });
     });
 

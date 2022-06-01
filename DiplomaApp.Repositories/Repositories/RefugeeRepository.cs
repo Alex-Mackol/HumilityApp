@@ -14,22 +14,23 @@ namespace DiplomaApp.Repositories.Repositories
         }
         public IEnumerable<Refugee> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Refugees.ToList();
         }
 
         public IEnumerable<string> GetEntityNames()
         {
-            throw new NotImplementedException();
+            return context.Refugees.Select(r => r.UserId).ToList();
         }
 
         public bool IsEntityExist(Refugee entity)
         {
-            throw new NotImplementedException();
+            return context.Refugees.Any(r =>
+                r.FamilyAmount == entity.FamilyAmount && r.Helps == entity.Helps && r.Id != entity.Id);
         }
 
         public Refugee Read(int id)
         {
-            throw new NotImplementedException();
+            return context.Refugees.Find(id);
         }
 
         public void Update(Refugee item)
@@ -43,7 +44,11 @@ namespace DiplomaApp.Repositories.Repositories
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var refugee = context.Refugees.Find(id);
+            if (refugee != null)
+            {
+                context.Refugees.Update(refugee);
+            }
         }
     }
 }

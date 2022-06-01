@@ -22,17 +22,18 @@ public class ProductRepository:IRepository<Product>
 
     public IEnumerable<string> GetEntityNames()
     {
-        throw new NotImplementedException();
+        return _context.Products.Select(p=>p.Name).ToList();
     }
 
     public bool IsEntityExist(Product entity)
     {
-        throw new NotImplementedException();
+        return _context.Products.Any(p => p.Name == entity.Name && p.Category.Name == entity.Category.Name
+                                                                && p.Id != entity.Id);
     }
 
     public void Create(Product item)
     {
-        throw new NotImplementedException();
+        _context.Products.Add(item);
     }
 
     public Product Read(int id)
@@ -42,11 +43,16 @@ public class ProductRepository:IRepository<Product>
 
     public void Update(Product item)
     {
-        throw new NotImplementedException();
+       _context.Products.Update(item);
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        var product = _context.Products.Find(id);
+        if (product != null)
+        {
+            product.IsAvailable = false;
+            _context.Products.Update(product);
+        }
     }
 }

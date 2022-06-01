@@ -18,17 +18,19 @@ namespace DiplomaApp.Repositories.Repositories
         }
         public IEnumerable<Volunteer> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Volunteers.ToList();
         }
 
         public IEnumerable<string> GetEntityNames()
         {
-            throw new NotImplementedException();
+            return context.Volunteers.Select(v => v.Name).ToList();
         }
 
         public bool IsEntityExist(Volunteer entity)
         {
-            throw new NotImplementedException();
+            return context.Volunteers.Any(v =>
+                v.Name == entity.Name && v.PhoneNumber == entity.PhoneNumber && v.UserId == entity.UserId &&
+                v.Id != entity.Id);
         }
 
         public Volunteer Read(string id)
@@ -43,11 +45,16 @@ namespace DiplomaApp.Repositories.Repositories
      
         public void Update(Volunteer item)
         {
-            throw new NotImplementedException();
+            context.Volunteers.Update(item);
         }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var volunt = context.Volunteers.Find(id);
+            if (volunt != null)
+            {
+                context.Volunteers.Remove(volunt);
+                ;
+            }
         }
     }
 }

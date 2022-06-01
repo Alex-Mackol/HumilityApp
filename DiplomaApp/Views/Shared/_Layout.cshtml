@@ -49,11 +49,15 @@
                         <strong>@User.Identity.Name</strong>
                     </a>
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                        <li>
-                                <a class="dropdown-item" asp-route-myposts="true" asp-controller="Apartament"
+                        @if (User.IsInRole("volunteer"))
+                                {
+                                    <li>
+                                        <a class="dropdown-item" asp-route-myposts="true" asp-controller="Apartament"
                                 asp-action="Index">Мої оголошення житла</a>
-                            </li>
-                        <li>
+                                    </li>
+                                }
+                                <li>
+                            
                             <hr class="dropdown-divider">
                         </li>
                         <li>

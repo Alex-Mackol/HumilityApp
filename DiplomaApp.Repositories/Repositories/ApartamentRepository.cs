@@ -21,7 +21,7 @@ namespace DiplomaApp.Repositories.Repositories
 
         public IEnumerable<string> GetEntityNames()
         {
-            throw new NotImplementedException();
+            return context.Apartaments.Select(a => a.Street).ToList();
         }
 
         public bool IsEntityExist(Apartament entity)

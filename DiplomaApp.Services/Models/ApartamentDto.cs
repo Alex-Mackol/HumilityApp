@@ -17,6 +17,7 @@ namespace DiplomaApp.Services.Models
         public string Street { get; set; }
 
         public string VolunteerPhone { get; set; }
+
         public string VolunterName { get; set; }
 
         public int VolunteerId { get; set; }

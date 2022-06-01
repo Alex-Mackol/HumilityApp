@@ -69,8 +69,9 @@ namespace DiplomaApp.Services.Services
                 refugee.Id = 0;
                 refugee.Helps = type;
                 unitOfWork.Refugees.Create(refugee);
+                unitOfWork.Save();
             }
-            unitOfWork.Save();
+            
 
 
         }

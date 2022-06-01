@@ -28,26 +28,30 @@ public class CategoryRepository:IRepository<Category>
 
     public bool IsEntityExist(Category entity)
     {
-        throw new NotImplementedException();
+        return _context.Categories.Any(c => c.Name == entity.Name && c.Id != entity.Id);
     }
 
     public void Create(Category item)
     {
-        throw new NotImplementedException();
+        _context.Categories.Add(item);
     }
 
     public Category Read(int id)
     {
-        throw new NotImplementedException();
+        return _context.Categories.FirstOrDefault(c=> c.Id == id);
     }
 
     public void Update(Category item)
     {
-        throw new NotImplementedException();
+        _context.Categories.Update(item);
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        var category = _context.Categories.Find(id);
+        if (category != null)
+        { 
+            _context.Categories.Remove(category);
+        }
     }
 }
